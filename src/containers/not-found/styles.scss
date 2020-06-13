@@ -1,0 +1,15 @@
+@use "../../styles/colors";
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notFound h1 {
+  color: colors.$primary;
+}
+
+.image {
+  height: 300px;
+}
