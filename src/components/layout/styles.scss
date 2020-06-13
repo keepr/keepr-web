@@ -1,11 +1,28 @@
 @use "../../styles/breakpoints";
 
-.container {
-  max-width: breakpoints.$desktop;
-  margin: 0 auto;
-  padding: 0 1rem;
+.layout {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
 
-  @media (min-width: breakpoints.$desktop) {
+.container {
+  flex: 1;
+  transform: translateX(0);
+  transition: transform 0.2s ease-in-out;
+
+  &.sideBarVisible {
+    transform: translateX(-75vw);
+  }
+}
+
+.content {
+  padding: 0 1rem;
+  max-width: breakpoints.$large-desktop;
+  margin: 0 auto;
+
+  @media (min-width: breakpoints.$large-desktop) {
     padding: 0;
   }
 }

@@ -1,19 +1,20 @@
-@use "./colors.scss";
+@use "./colors";
 
 * {
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Ubuntu', sans-serif;
-  background-color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: colors.$white;
   color: colors.$mineshaft;
 
-  @media (prefers-color-scheme: dark) {
-    background-color: colors.$mineshaft;
-    color: colors.$alabaster;
+  label, input, textarea, button {
+    font-family: inherit;
   }
 }
 

@@ -1,6 +1,5 @@
 {
-  "name": "Helix",
-  "short_name": "Helix",
+  "name": "Keeper",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -13,8 +12,8 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#f28a30",
-  "background_color": "#f28a30",
+  "theme_color": "#4B3F72",
+  "background_color": "#4B3F72",
   "start_url": "/",
   "display": "standalone"
 }

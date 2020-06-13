@@ -1,0 +1,39 @@
+@use "../../styles/colors";
+
+.sidebar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: darken(colors.$primary, 5%);
+  color: colors.$white;
+  transform: translateX(75vw);
+  width: 75vw;
+  transition: transform 0.2s ease-in-out, z-index 0.2s ease-in-out;
+  font-size: 1.5rem;
+
+  &.visible {
+    transform: translateX(0);
+  }
+
+  a {
+    margin-top: 1rem;
+    font-size: inherit;
+    color: inherit;
+  }
+}
+
+.close {
+  align-self: flex-end;
+  outline: 0;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  cursor: pointer;
+  font-size: 1.7rem;
+  color: inherit;
+}

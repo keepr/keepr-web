@@ -1,31 +1,79 @@
 @use "../../styles/colors";
+@use "../../styles/breakpoints";
 
 .nav {
+  position: relative;
+  z-index: 2;
+  background-color: colors.$primary;
+}
+
+.menu {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  height: 64px;
-  padding: 0 1rem;
-  background: colors.$primary;
-  border-bottom: 4px solid colors.$primary-dark;
+  font-size: 1.5rem;
+  color: colors.$white;
+  max-width: breakpoints.$large-desktop;
+  margin: 0 auto;
+  padding: 1rem;
+
+  .logo {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    svg {
+      display: block;
+      height: 100%;
+      margin-right: 0.5rem;
+    }
+  }
+
+  .link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: colors.$accent;
+    }
+  }
+
+  @media (min-width: breakpoints.$large-desktop) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
-.logoLink {
-  display: flex;
-  align-items: center;
-  color: inherit;
-  text-decoration: none;
+.desktopNav {
+  display: none;
+
+  a {
+    margin-right: 1rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  @media (min-width: breakpoints.$tablet) {
+    display: flex;
+    align-items: center;
+  }
 }
 
-.logo {
-  height: 50px;
-  margin-right: 0.5rem;
-  transform: rotate(45deg);
-}
-
-.logoText {
-  letter-spacing: 4px;
+.burger {
+  outline: 0;
+  background-color: transparent;
+  padding: 0;
   margin: 0;
-  text-transform: uppercase;
-}
+  border: 0;
+  cursor: pointer;
+  font-size: inherit;
+  color: inherit;
 
+  @media (min-width: breakpoints.$tablet) {
+    display: none;
+  }
+}

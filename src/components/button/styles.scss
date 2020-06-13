@@ -1,0 +1,35 @@
+@use "../../styles/colors";
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  font-size: 1rem;
+  outline: 0;
+  border: 0;
+  border-radius: 0.25rem;
+  color: white;
+  font-weight: 600;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  background-color: colors.$primary;
+  transform: translateY(0);
+  transition: 100ms linear transform, 0.2s ease-in-out background-color;
+
+  &:active {
+    transform: translateY(-2px)
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #999;
+  }
+
+  svg {
+    height: 20px;
+    stroke: colors.$white;
+  }
+}

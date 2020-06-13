@@ -1,0 +1,41 @@
+@use "../../styles/colors";
+
+.field {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+
+  .label {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .error {
+    display: block;
+    color: colors.$torch-red;
+    opacity: 0.7;
+  }
+
+  .input {
+    display: block;
+    width: 100%;
+    border-radius: 0.25rem;
+    border: 2px solid colors.$gallery;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+    outline: 0;
+    padding: 0.8rem;
+    font-size: 1rem;
+    margin: 4px 0;
+    transition: 0.2s ease-in-out border-color;
+
+    &:focus {
+      border-color: colors.$secondary;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@use "../../styles/colors";
+
+.login {
+  height: 100vh;
+  padding: 0 1rem;
+  background-color: colors.$primary;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: colors.$white;
+
+  .logo {
+    font-size: 9rem;
+    margin-top: 3rem;
+    fill: darken(colors.$primary, 5%);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin: 2rem 0;
+  }
+
+  a {
+    color: colors.$accent;
+  }
+}
+
+.links {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.button {
+  margin: 2rem 0;
+  background-color: colors.$secondary;
+}

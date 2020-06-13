@@ -12,7 +12,7 @@ module.exports = Object.assign(
       port,
       proxy: {
         '/api': {
-          target: process.env.API_URL,
+          target: process.env.API_URL || 'http://localhost:5000',
           secure: false,
           changeOrigin: true
         }
