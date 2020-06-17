@@ -1,0 +1,14 @@
+@use "../../styles/colors";
+
+.message {
+  border-radius: 0.25rem;
+  padding: 1rem;
+  background-color: lighten(colors.$secondary, 40%);
+  color: colors.$secondary;
+  font-size: 1rem;
+}
+
+.error {
+  background-color: lighten(colors.$torch-red, 40%);
+  color: colors.$torch-red;
+}

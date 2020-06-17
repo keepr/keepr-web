@@ -3,11 +3,11 @@ import { Link, useHistory } from 'react-router-dom';
 import { Field } from 'react-final-form';
 import { FORM_ERROR } from 'final-form';
 
-// helpers
-import { Fetch, FetchWithAuth } from '../../helpers/fetch';
-
 // context
 import UserContext from '../../context/user';
+
+// helpers
+import { Fetch, FetchWithAuth } from '../../helpers/fetch';
 
 // components
 import AuthLayout from '../../components/auth-layout';
@@ -16,25 +16,27 @@ import Input from '../../components/input';
 
 import styles from './styles.scss';
 
-const Login = () => {
-  const { setUser } = useContext(UserContext);
+const Register = () => {
   const history = useHistory();
+  const { setUser } = useContext(UserContext);
 
   return (
     <AuthLayout>
-      <h1>Login</h1>
+      <h1>Register</h1>
       <Form
         onSubmit={(values) =>
           new Promise(async (resolve, reject) => {
             try {
-              // login
-              const token = await Fetch('/api/login', {
+              const token = await Fetch('/api/register', {
                 method: 'POST',
                 body: JSON.stringify(values)
               });
 
-              // set token in localstorage
-              localStorage.setItem('auth', token as string);
+              // always activate for now
+              const jwt = await Fetch(`/api/activate/${token}`, {
+                method: 'POST'
+              });
+              localStorage.setItem('auth', jwt as string);
 
               // now fetch user account
               const user = await FetchWithAuth('/api/users/me');
@@ -43,14 +45,26 @@ const Login = () => {
                 history.push('/');
                 return resolve();
               }
+
+              return reject('Unable to activate User account.');
             } catch (ex) {
               return reject(ex.message);
             }
-
-            return reject();
           }).catch((ex) => ({ [FORM_ERROR]: ex }))
         }
       >
+        <Field
+          label="First name"
+          name="firstName"
+          type="text"
+          component={Input}
+        />
+        <Field
+          label="Last name"
+          name="lastName"
+          type="text"
+          component={Input}
+        />
         <Field label="Email" name="email" type="email" component={Input} />
         <Field
           label="Password"
@@ -60,11 +74,11 @@ const Login = () => {
         />
       </Form>
       <div className={styles.links}>
-        <Link to="/register">Register</Link>
+        <Link to="/login">Login</Link>
         <Link to="/forgot-password">Forgot your password?</Link>
       </div>
     </AuthLayout>
   );
 };
 
-export default Login;
+export default Register;

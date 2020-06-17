@@ -1,0 +1,15 @@
+@use "../../styles/colors";
+
+.form {
+  width: 100%;
+  margin-bottom: 0;
+
+  .formError {
+    margin-bottom: 1rem;
+  }
+}
+
+.button {
+  margin: 2rem 0;
+  background-color: colors.$secondary;
+}

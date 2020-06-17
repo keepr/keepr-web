@@ -1,0 +1,25 @@
+@use "../../styles/colors";
+
+.layout {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background-color: colors.$primary;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: colors.$white;
+
+  .logo {
+    font-size: 9rem;
+    fill: darken(colors.$primary, 5%);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin: 2rem 0;
+  }
+
+  a {
+    color: colors.$accent;
+  }
+}

@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
-import { Route, Redirect, RouteProps } from 'react-router-dom';
+import { Route, RouteProps } from 'react-router-dom';
 
 // context
 import UserContext from '../../context/user';
 
 // components
 import Layout from '../layout';
+
+// components
+import Login from '../../containers/login';
 
 const ProtectedRoute = ({ ...props }: RouteProps) => {
   const { user } = useContext(UserContext);
@@ -14,7 +17,7 @@ const ProtectedRoute = ({ ...props }: RouteProps) => {
       <Route {...props} />
     </Layout>
   ) : (
-    <Redirect to="/login" />
+    <Login />
   );
 };
 

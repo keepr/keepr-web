@@ -8,6 +8,9 @@ import './styles/global.scss';
 // app container
 import App from './containers';
 
+// context
+import { UserProvider } from './context/user';
+
 const publicUrl = process.env.PUBLIC_URL || '/';
 const supportsHistory = 'pushState' in window.history;
 const rootElement = document.getElementById('root');
@@ -16,7 +19,9 @@ const renderApp = (TheApp: React.FC) => {
   if (rootElement) {
     const HelixApp = (
       <BrowserRouter basename={publicUrl} forceRefresh={!supportsHistory}>
-        <TheApp />
+        <UserProvider>
+          <TheApp />
+        </UserProvider>
       </BrowserRouter>
     );
 
