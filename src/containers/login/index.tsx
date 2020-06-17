@@ -27,7 +27,7 @@ const Login = () => {
               // login
               const token = await Fetch('/api/login', {
                 method: 'POST',
-                body: JSON.stringify(values),
+                body: JSON.stringify(values)
               });
 
               // set token in localstorage

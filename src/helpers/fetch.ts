@@ -5,13 +5,13 @@ const mergeHeaders = (
   ...body,
   headers: {
     ...body.headers,
-    ...headers,
-  },
+    ...headers
+  }
 });
 
 export const Fetch = async (input: RequestInfo, body?: RequestInit) => {
   const headers = {
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json'
   };
   const requestBody = mergeHeaders(body || {}, headers);
   const response = await fetch(input, requestBody);
@@ -28,7 +28,7 @@ export const Fetch = async (input: RequestInfo, body?: RequestInit) => {
 export const FetchWithAuth = (url: string, body?: RequestInit) => {
   const token = localStorage.getItem('auth');
   const headers = {
-    Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${token}`
   };
   const requestBody = mergeHeaders(body || {}, headers);
 

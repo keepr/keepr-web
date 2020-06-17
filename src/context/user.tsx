@@ -23,7 +23,7 @@ export const UserProvider = ({ children }: Props) => {
     },
     clearUser: () => {
       setUser(null);
-    },
+    }
   };
 
   return (

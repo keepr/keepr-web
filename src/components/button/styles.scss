@@ -20,7 +20,7 @@
   transition: 100ms linear transform, 0.2s ease-in-out background-color;
 
   &:active {
-    transform: translateY(-2px)
+    transform: translateY(-2px);
   }
 
   &:disabled {

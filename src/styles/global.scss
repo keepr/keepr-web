@@ -13,7 +13,10 @@ body {
   background-color: colors.$white;
   color: colors.$mineshaft;
 
-  label, input, textarea, button {
+  label,
+  input,
+  textarea,
+  button {
     font-family: inherit;
   }
 }

@@ -1,10 +1,10 @@
 {
   "parser": "@typescript-eslint/parser",
   "env": {
-    browser: true,
-    commonjs: true,
-    es6: true,
-    node: true,
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
   },
   "plugins": [
     "@typescript-eslint",
@@ -23,16 +23,14 @@
     "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
-      jsx: true,
+      "jsx": true
     }
   },
   "rules": {
     "@typescript-eslint/indent": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "prettier/prettier": [
-      "error"
-    ]
+    "prettier/prettier": ["error"]
   },
   "settings": {
     "react": {
