@@ -1,7 +1,18 @@
 import React from 'react';
 
-const VERSION = process.env.VERSION || '0.0.0';
+// components
+import Page from '../../components/page';
 
-const Health = () => <h1>{VERSION}</h1>;
+const VERSION = process.env.VERSION || '0.0.0';
+const ENV = process.env.NODE_ENV || 'development';
+
+const Health = () => (
+  <Page title="Health">
+    <ul>
+      <li>ENV: {ENV}</li>
+      <li>VERSION: {VERSION}</li>
+    </ul>
+  </Page>
+);
 
 export default Health;

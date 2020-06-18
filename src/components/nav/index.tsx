@@ -22,7 +22,7 @@ const Nav = ({ onMenuClick }: Props) => {
     <nav className={styles.nav}>
       <div className={styles.menu}>
         <Link className={styles.logo} to="/">
-          <GiBlackKnightHelm /> Keeper
+          <GiBlackKnightHelm /> Keepr
         </Link>
         {user && (
           <button className={styles.burger} onClick={onMenuClick}>

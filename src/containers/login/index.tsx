@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { Field } from 'react-final-form';
 import { FORM_ERROR } from 'final-form';
 
@@ -22,8 +23,10 @@ const Login = () => {
 
   return (
     <AuthLayout>
+      <Helmet title="Login | Keepr" />
       <h1>Login</h1>
       <Form
+        buttonText="Login"
         onSubmit={(values) =>
           new Promise(async (resolve, reject) => {
             try {

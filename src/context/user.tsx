@@ -26,7 +26,6 @@ export const UserProvider = ({ children }: Props) => {
     }
   };
 
-  console.log('what is user context', context);
   return (
     <UserContext.Provider value={context}>{children}</UserContext.Provider>
   );

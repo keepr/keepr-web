@@ -1,0 +1,14 @@
+@use "../../styles/colors";
+
+.page {
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    color: colors.$mineshaft;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+}

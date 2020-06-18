@@ -10,7 +10,7 @@ interface Props {
 const MenuItems = ({ onMenuItemClick }: Props) => (
   <>
     <Link onClick={onMenuItemClick} className={styles.link} to="/">
-      Track
+      Home
     </Link>
     <Link onClick={onMenuItemClick} className={styles.link} to="/clients">
       Clients

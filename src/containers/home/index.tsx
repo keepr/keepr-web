@@ -1,16 +1,17 @@
 import React from 'react';
 
-import styles from './styles.scss';
+// components
+import Page from '../../components/page';
 
 const Home = () => (
-  <div className={styles.home}>
+  <Page title="Home">
     <div>thing</div>
     <div>thing</div>
     <div>thing</div>
     <div>thing</div>
     <div>thing</div>
     <div>thing</div>
-  </div>
+  </Page>
 );
 
 export default Home;

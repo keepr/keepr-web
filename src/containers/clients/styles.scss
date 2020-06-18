@@ -1,0 +1,27 @@
+@use "../../styles/colors";
+
+.client {
+  background-color: white;
+  border: 2px solid colors.$gallery;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: colors.$mineshaft;
+  text-decoration: none;
+
+  .heading {
+    color: colors.$primary;
+    font-size: 1.5rem;
+  }
+
+  .address {
+    margin-bottom: 1rem;
+  }
+
+  .view {
+    color: colors.$secondary;
+    text-decoration: underline;
+  }
+}
