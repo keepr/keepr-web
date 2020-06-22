@@ -1,0 +1,20 @@
+@use "../../styles/colors";
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+  animation: pulse 2s ease-in-out infinite;
+  height: 2rem;
+  width: 100%;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: colors.$gallery;
+  }
+  100% {
+    background-color: darken(colors.$gallery, 2%);
+  }
+}

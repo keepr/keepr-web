@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useAsync } from 'react-use';
 
 // helpers
 import { FetchWithAuth } from '../../helpers/fetch';
 
 // components
+import LinkCard from '../../components/card/link';
 import Page from '../../components/page';
+import Placeholder from '../../components/placeholder';
 
 import styles from './styles.scss';
 
@@ -19,22 +20,21 @@ const Clients = () => {
     <Page title="Clients">
       {loading && (
         <>
-          <div className={styles.placeholder} />
-          <div className={styles.placeholder} />
-          <div className={styles.placeholder} />
+          <Placeholder />
+          <Placeholder />
+          <Placeholder />
         </>
       )}
       {data &&
         (data as Keeper.Client[]).map((client) => (
-          <Link
+          <LinkCard
             key={`client-${client.id}`}
             to={`/client/${client.id}`}
             className={styles.client}
           >
             <span className={styles.heading}>{client.name}</span>
             <span className={styles.address}>{client.address}</span>
-            <span className={styles.view}>View</span>
-          </Link>
+          </LinkCard>
         ))}
     </Page>
   );

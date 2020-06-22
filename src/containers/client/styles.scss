@@ -1,0 +1,13 @@
+@use "../../styles/colors";
+
+.section {
+  p {
+    margin-top: 0;
+  }
+
+  h3 {
+    color: colors.$primary;
+    font-weight: 600;
+    margin-top: 0;
+  }
+}

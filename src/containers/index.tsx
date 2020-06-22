@@ -14,6 +14,7 @@ import ProtectedRoute from '../components/protected-route';
 
 // lazy loaded containers
 const Clients = lazy(() => import('./clients'));
+const Client = lazy(() => import('./client'));
 const Home = lazy(() => import('./home'));
 const Health = lazy(() => import('./health'));
 const Login = lazy(() => import('./login'));
@@ -39,6 +40,7 @@ const App = () => {
       <Switch>
         <ProtectedRoute path="/" component={Home} exact />
         <ProtectedRoute path="/clients" component={Clients} exact />
+        <ProtectedRoute path="/client/:id" component={Client} exact />
         <Route path="/login" component={Login} exact />
         <Route path="/register" component={Register} exact />
         <Route path="/logout" component={Logout} exact />
