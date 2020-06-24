@@ -1,6 +1,6 @@
 @use "../../styles/colors";
 
-.button {
+@mixin button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,25 +11,50 @@
   border-radius: 0.25rem;
   color: white;
   font-weight: 600;
-  width: 100%;
-  margin: 0 auto;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
   cursor: pointer;
-  background-color: colors.$primary;
   transform: translateY(0);
-  transition: 100ms linear transform, 0.2s ease-in-out background-color;
+  transition: 0.1s ease-in-out transform, 0.2s ease-in-out background-color, 0.2s ease-in-out border-color;
 
-  &:active {
+  &.primary {
+    background-color: colors.$primary;
+    border-bottom: 2px solid colors.$primary-dark;
+  }
+
+  &.secondary {
+    background-color: colors.$secondary;
+    border-bottom: 2px solid colors.$secondary-dark;
+  }
+
+  &.danger {
+    background-color: colors.$torch-red;
+    border-bottom: 2px solid darken(colors.$torch-red, 5%);
+  }
+
+  &:active, &:hover {
     transform: translateY(-2px);
   }
 
   &:disabled {
     cursor: not-allowed;
-    background-color: #999;
+    background-color: colors.$dusty-gray;
+    border-bottom-color: darken(colors.$dusty-gray, 5%);
   }
 
   svg {
     height: 20px;
     stroke: colors.$white;
   }
+}
+
+.button {
+  @include button;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.linkButton {
+  @include button;
+  background-color: colors.$secondary;
+  border-bottom: 2px solid colors.$secondary-dark;
+  padding: 0.3rem 1rem;
 }

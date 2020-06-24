@@ -1,11 +1,13 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useAsync } from 'react-use';
+import { FaPlus, FaUsers, FaFolder } from 'react-icons/fa';
 
 // helpers
 import { FetchWithAuth } from '../../helpers/fetch';
 
 // components
+import LinkButton from '../../components/button/link';
 import LinkCard from '../../components/card/link';
 import Page from '../../components/page';
 import Placeholder from '../../components/placeholder';
@@ -44,7 +46,13 @@ const Client = () => {
         )}
       </div>
       <div className={styles.section}>
-        <h3>Contacts</h3>
+        <h3>
+          <FaUsers />
+          Contacts
+          <LinkButton to={`/client/${id}/add-contact`}>
+            <FaPlus className={styles.add} />
+          </LinkButton>
+        </h3>
         {contacts ? (
           contacts.map((x) => (
             <LinkCard key={`contact-${x.id}`} to={`/contact/${x.id}`}>
@@ -60,13 +68,19 @@ const Client = () => {
         )}
       </div>
       <div className={styles.section}>
-        <h3>Projects</h3>
+        <h3>
+          <FaFolder />
+          Projects
+          <LinkButton to={`/client/${id}/add-project`}>
+            <FaPlus className={styles.add} />
+          </LinkButton>
+        </h3>
         {projects ? (
           projects.map((x) => (
             <LinkCard key={`project-${x.id}`} to={`/project/${x.id}`}>
               <div>{x.name}</div>
               <div>
-                Budget: {x.budget} {x.currency}
+                Budget: {x.budget.toLocaleString()} {x.currency}
               </div>
               <div>Archived: {x.archive}</div>
             </LinkCard>

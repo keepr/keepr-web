@@ -26,35 +26,33 @@ const Register = () => {
       <Helmet title="Register | Keepr" />
       <h1>Register</h1>
       <Form
+        buttonVariant="secondary"
         buttonText="Register"
-        onSubmit={(values) =>
-          new Promise(async (resolve, reject) => {
-            try {
-              const token = await Fetch('/api/register', {
-                method: 'POST',
-                body: JSON.stringify(values)
-              });
+        onSubmit={async (values) => {
+          try {
+            const token = await Fetch('/api/register', {
+              method: 'POST',
+              body: JSON.stringify(values)
+            });
 
-              // always activate for now
-              const jwt = await Fetch(`/api/activate/${token}`, {
-                method: 'POST'
-              });
-              localStorage.setItem('auth', jwt as string);
+            // always activate for now
+            const jwt = await Fetch(`/api/activate/${token}`, {
+              method: 'POST'
+            });
+            localStorage.setItem('auth', jwt as string);
 
-              // now fetch user account
-              const user = await FetchWithAuth('/api/users/me');
-              if (setUser) {
-                setUser(user as Keeper.User);
-                history.push('/');
-                return resolve();
-              }
-
-              return reject('Unable to activate User account.');
-            } catch (ex) {
-              return reject(ex.message);
+            // now fetch user account
+            const user = await FetchWithAuth('/api/users/me');
+            if (setUser) {
+              setUser(user as Keeper.User);
+              return history.push('/');
             }
-          }).catch((ex) => ({ [FORM_ERROR]: ex }))
-        }
+
+            return { [FORM_ERROR]: 'Unable to activate User account.' };
+          } catch (ex) {
+            return { [FORM_ERROR]: ex.message };
+          }
+        }}
       >
         <Field
           label="First name"

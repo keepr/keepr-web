@@ -3,14 +3,21 @@ $space-cadet: #1f2041;
 $cyber-grape: #4b3f72;
 $yellow-red: #ffc857;
 $viridian-green: #119da4;
-$blue-sapphire: #19647e;
-$mineshaft: #383838;
-$gallery: #efefef;
+$gallery: #eee;
 $alabaster: #fcfcfc;
 $white: #ffffff;
-$torch-red: #ff0040;
+$torch-red: #d61e1e;
+$ghost-white: #fafaff;
+$dusty-gray: #999999;
+
+// box shadow helper
+$box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 
 // theme
 $primary: $cyber-grape;
+$primary-dark: darken($primary, 5%);
+
 $secondary: $viridian-green;
+$secondary-dark: darken($secondary, 5%);
+
 $accent: $yellow-red;

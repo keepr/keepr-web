@@ -1,14 +1,14 @@
 @use "../../styles/colors";
 
 .card {
-  background-color: white;
-  border: 2px solid colors.$gallery;
+  background-color: colors.$white;
   display: flex;
   flex-direction: column;
   border-radius: 0.25rem;
   padding: 1rem;
   margin-bottom: 1rem;
-  color: colors.$mineshaft;
+  color: inherit;
+  border: 2px solid colors.$gallery;
   text-decoration: none;
 }
 

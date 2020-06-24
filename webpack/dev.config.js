@@ -8,9 +8,10 @@ module.exports = Object.assign(
   {
     mode: 'development',
     devServer: {
+      host: '0.0.0.0',
+      port,
       stats: 'minimal',
       hot: true,
-      port,
       proxy: {
         '/api': {
           target: process.env.API_URL || 'http://localhost:5000',

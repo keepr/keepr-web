@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import { Form as FinalForm } from 'react-final-form';
 
 // components
@@ -15,13 +16,24 @@ interface Props {
   onSubmit: (input: FormFields) => void;
   children: React.ReactNode;
   buttonText?: string;
+  buttonVariant?: 'primary' | 'secondary';
+  className?: string;
 }
 
-const Form = ({ onSubmit, children, buttonText = 'Submit' }: Props) => (
+const Form = ({
+  onSubmit,
+  children,
+  className,
+  buttonText = 'Submit',
+  buttonVariant = 'primary'
+}: Props) => (
   <FinalForm
     onSubmit={onSubmit}
     render={({ handleSubmit, submitting, pristine, submitError }) => (
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form
+        className={classnames(styles.form, className)}
+        onSubmit={handleSubmit}
+      >
         {submitError && (
           <Message className={styles.formError} error>
             {submitError}
@@ -32,6 +44,7 @@ const Form = ({ onSubmit, children, buttonText = 'Submit' }: Props) => (
           disabled={pristine || submitting}
           loading={submitting}
           className={styles.button}
+          variant={buttonVariant}
         >
           {buttonText}
         </Button>

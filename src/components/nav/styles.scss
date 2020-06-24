@@ -5,6 +5,7 @@
   position: relative;
   z-index: 2;
   background-color: colors.$primary;
+  border-bottom: 4px solid colors.$primary-dark;
   margin-bottom: 1rem;
 }
 
@@ -23,10 +24,11 @@
     text-decoration: none;
     display: flex;
     align-items: center;
+    font-weight: 600;
 
     svg {
       display: block;
-      height: 100%;
+      font-size: 1.5rem;
       margin-right: 0.5rem;
     }
   }

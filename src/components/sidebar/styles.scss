@@ -8,7 +8,7 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  background-color: darken(colors.$primary, 5%);
+  background-color: colors.$primary-dark;
   color: colors.$white;
   transform: translateX(75vw);
   width: 75vw;

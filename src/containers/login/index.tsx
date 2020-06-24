@@ -26,33 +26,31 @@ const Login = () => {
       <Helmet title="Login | Keepr" />
       <h1>Login</h1>
       <Form
+        buttonVariant="secondary"
         buttonText="Login"
-        onSubmit={(values) =>
-          new Promise(async (resolve, reject) => {
-            try {
-              // login
-              const token = await Fetch('/api/login', {
-                method: 'POST',
-                body: JSON.stringify(values)
-              });
+        onSubmit={async (values) => {
+          try {
+            // login
+            const token = await Fetch('/api/login', {
+              method: 'POST',
+              body: JSON.stringify(values)
+            });
 
-              // set token in localstorage
-              localStorage.setItem('auth', token as string);
+            // set token in localstorage
+            localStorage.setItem('auth', token as string);
 
-              // now fetch user account
-              const user = await FetchWithAuth('/api/users/me');
-              if (setUser) {
-                setUser(user as Keeper.User);
-                history.push('/');
-                return resolve();
-              }
-            } catch (ex) {
-              return reject(ex.message);
+            // now fetch user account
+            const user = await FetchWithAuth('/api/users/me');
+            if (setUser) {
+              setUser(user as Keeper.User);
+              return history.push('/');
             }
 
-            return reject();
-          }).catch((ex) => ({ [FORM_ERROR]: ex }))
-        }
+            return { [FORM_ERROR]: 'Unable to log in.' };
+          } catch (ex) {
+            return { [FORM_ERROR]: ex.message };
+          }
+        }}
       >
         <Field label="Email" name="email" type="email" component={Input} />
         <Field
