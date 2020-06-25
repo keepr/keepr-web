@@ -28,7 +28,7 @@ const AddContact = () => {
 
             return history.push(`/client/${id}`);
           } catch (ex) {
-            return { [FORM_ERROR]: ex };
+            return { [FORM_ERROR]: ex.message };
           }
         }}
       >

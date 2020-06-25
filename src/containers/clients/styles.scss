@@ -1,7 +1,14 @@
 @use "../../styles/colors";
 
 .client {
-  text-decoration: none;
+  display: flex;
+  align-items: center;
+
+  .info {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
 
   .heading {
     color: colors.$primary;
@@ -10,10 +17,5 @@
 
   .address {
     margin-bottom: 1rem;
-  }
-
-  .view {
-    color: colors.$secondary;
-    text-decoration: underline;
   }
 }

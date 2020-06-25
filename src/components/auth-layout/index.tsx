@@ -1,5 +1,4 @@
 import React from 'react';
-import { GiBlackKnightHelm } from 'react-icons/gi';
 
 import styles from './styles.scss';
 
@@ -9,7 +8,7 @@ interface Props {
 
 const AuthLayout = ({ children }: Props) => (
   <div className={styles.layout}>
-    <GiBlackKnightHelm className={styles.logo} />
+    <span className={styles.logo}>keepr</span>
     {children}
   </div>
 );

@@ -40,3 +40,19 @@
     margin-bottom: 0;
   }
 }
+
+.avatarCard {
+  display: flex;
+  align-items: center;
+
+  .info {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    .name {
+      color: colors.$accent;
+      font-weight: 600;
+    }
+  }
+}

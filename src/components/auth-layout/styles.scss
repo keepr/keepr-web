@@ -7,11 +7,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: colors.$white;
+  color: white;
 
   .logo {
-    font-size: 9rem;
-    fill: white;
+    font-size: 4rem;
+    color: white;
   }
 
   h1 {

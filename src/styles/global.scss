@@ -11,7 +11,7 @@ body {
   padding: 0;
   font-family: 'Source Sans Pro', sans-serif;
   background-color: colors.$ghost-white;
-  color: colors.$space-cadet;
+  color: colors.$text;
 
   label,
   input,
@@ -26,5 +26,5 @@ svg {
 }
 
 a {
-  color: colors.$secondary;
+  color: colors.$accent;
 }

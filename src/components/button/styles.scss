@@ -1,5 +1,7 @@
 @use "../../styles/colors";
 
+$border-height: 4px;
+
 @mixin button {
   display: flex;
   align-items: center;
@@ -14,20 +16,21 @@
   cursor: pointer;
   transform: translateY(0);
   transition: 0.1s ease-in-out transform, 0.2s ease-in-out background-color, 0.2s ease-in-out border-color;
+  border-bottom: $border-height solid transparent;
 
   &.primary {
     background-color: colors.$primary;
-    border-bottom: 2px solid colors.$primary-dark;
+    border-bottom-color: colors.$primary-dark;
   }
 
   &.secondary {
     background-color: colors.$secondary;
-    border-bottom: 2px solid colors.$secondary-dark;
+    border-bottom-color: colors.$secondary-dark;
   }
 
   &.danger {
     background-color: colors.$torch-red;
-    border-bottom: 2px solid darken(colors.$torch-red, 5%);
+    border-bottom-color: darken(colors.$torch-red, 5%);
   }
 
   &:active, &:hover {
@@ -42,7 +45,7 @@
 
   svg {
     height: 20px;
-    stroke: colors.$white;
+    stroke: white;
   }
 }
 
@@ -55,6 +58,6 @@
 .linkButton {
   @include button;
   background-color: colors.$secondary;
-  border-bottom: 2px solid colors.$secondary-dark;
+  border-bottom-color: colors.$secondary-dark;
   padding: 0.3rem 1rem;
 }

@@ -11,12 +11,13 @@ import LinkButton from '../../components/button/link';
 import LinkCard from '../../components/card/link';
 import Page from '../../components/page';
 import Placeholder from '../../components/placeholder';
+import TextAvatar from '../../components/text-avatar';
 
 import styles from './styles.scss';
 
 const Client = () => {
   const { id } = useParams();
-  const { value } = useAsync(async () => {
+  const { value, loading } = useAsync(async () => {
     const fetchClient = FetchWithAuth(`/api/clients/${id}`);
     const fetchContacts = FetchWithAuth(`/api/clients/${id}/contacts`);
     const fetchProjects = FetchWithAuth(`/api/clients/${id}/projects`);
@@ -39,11 +40,9 @@ const Client = () => {
   return (
     <Page title={client ? client.name : 'Loading'}>
       <div className={styles.section}>
-        {client ? (
-          <p className={styles.address}>{client.address}</p>
-        ) : (
-          <Placeholder />
-        )}
+        <Placeholder show={loading}>
+          <p className={styles.address}>{client?.address}</p>
+        </Placeholder>
       </div>
       <div className={styles.section}>
         <h3>
@@ -53,19 +52,24 @@ const Client = () => {
             <FaPlus className={styles.add} />
           </LinkButton>
         </h3>
-        {contacts ? (
-          contacts.map((x) => (
-            <LinkCard key={`contact-${x.id}`} to={`/contact/${x.id}`}>
-              <div>
-                {x.firstName} {x.lastName}
+        <Placeholder show={loading}>
+          {contacts?.map((x) => (
+            <LinkCard
+              className={styles.avatarCard}
+              key={`contact-${x.id}`}
+              to={`/contact/${x.id}`}
+            >
+              <TextAvatar text={`${x.firstName} ${x.lastName}`} />
+              <div className={styles.info}>
+                <span className={styles.name}>
+                  {x.firstName} {x.lastName}
+                </span>
+                <span>{x.email}</span>
+                <span>{x.phone}</span>
               </div>
-              <div>{x.email}</div>
-              <div>{x.phone}</div>
             </LinkCard>
-          ))
-        ) : (
-          <Placeholder />
-        )}
+          ))}
+        </Placeholder>
       </div>
       <div className={styles.section}>
         <h3>
@@ -75,8 +79,8 @@ const Client = () => {
             <FaPlus className={styles.add} />
           </LinkButton>
         </h3>
-        {projects ? (
-          projects.map((x) => (
+        <Placeholder show={loading}>
+          {projects?.map((x) => (
             <LinkCard key={`project-${x.id}`} to={`/project/${x.id}`}>
               <div>{x.name}</div>
               <div>
@@ -84,10 +88,8 @@ const Client = () => {
               </div>
               <div>Archived: {x.archive}</div>
             </LinkCard>
-          ))
-        ) : (
-          <Placeholder />
-        )}
+          ))}
+        </Placeholder>
       </div>
     </Page>
   );

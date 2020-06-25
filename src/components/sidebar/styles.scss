@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   background-color: colors.$primary-dark;
-  color: colors.$white;
+  color: white;
   transform: translateX(75vw);
   width: 75vw;
   transition: transform 0.2s ease-in-out, z-index 0.2s ease-in-out;

@@ -34,29 +34,25 @@ const Contact = () => {
     <Page
       title={contact ? `${contact.firstName} ${contact.lastName}` : 'Loading'}
     >
-      {contact ? (
-        <div>
-          <p>{contact.email}</p>
-          <p>{contact.phone}</p>
-          <Button
-            loading={state.loading}
-            variant="danger"
-            onClick={async () => {
-              const result = confirm(
-                'Are you sure you want to delete this contact?'
-              );
+      <Placeholder show={!contact}>
+        <p>{contact?.email}</p>
+        <p>{contact?.phone}</p>
+        <Button
+          loading={state.loading}
+          variant="danger"
+          onClick={async () => {
+            const result = confirm(
+              'Are you sure you want to delete this contact?'
+            );
 
-              if (result) {
-                deleteContact();
-              }
-            }}
-          >
-            Delete
-          </Button>
-        </div>
-      ) : (
-        <Placeholder />
-      )}
+            if (result) {
+              deleteContact();
+            }
+          }}
+        >
+          Delete
+        </Button>
+      </Placeholder>
     </Page>
   );
 };

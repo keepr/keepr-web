@@ -8,6 +8,7 @@ import { FetchWithAuth } from '../../helpers/fetch';
 import LinkCard from '../../components/card/link';
 import Page from '../../components/page';
 import Placeholder from '../../components/placeholder';
+import TextAvatar from '../../components/text-avatar';
 
 import styles from './styles.scss';
 
@@ -16,26 +17,26 @@ const Clients = () => {
     async () => await FetchWithAuth('/api/clients')
   );
 
+  const clients = !loading && data ? (data as Keeper.Client[]) : [];
+
   return (
     <Page title="Clients">
-      {loading && (
-        <>
-          <Placeholder />
-          <Placeholder />
-          <Placeholder />
-        </>
-      )}
-      {data &&
-        (data as Keeper.Client[]).map((client) => (
+      <Placeholder show={loading}>
+        {clients.map((client) => (
           <LinkCard
             key={`client-${client.id}`}
             to={`/client/${client.id}`}
             className={styles.client}
           >
-            <span className={styles.heading}>{client.name}</span>
-            <span className={styles.address}>{client.address}</span>
+            <TextAvatar text={client.name} />
+            <div className={styles.info}>
+              <span className={styles.heading}>{client.name}</span>
+              <span>Piet Pompies</span>
+              <span>1 active project</span>
+            </div>
           </LinkCard>
         ))}
+      </Placeholder>
     </Page>
   );
 };
