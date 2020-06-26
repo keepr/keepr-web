@@ -1,6 +1,13 @@
 declare namespace Keeper {
   interface ApiModel {
-    [key: string]: string | number | boolean | Date | ApiModel | null;
+    [key: string]:
+      | string
+      | number
+      | boolean
+      | Date
+      | ApiModel
+      | ApiModel[]
+      | null;
   }
 
   interface ApiResponse {

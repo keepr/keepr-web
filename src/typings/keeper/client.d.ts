@@ -6,4 +6,9 @@ declare namespace Keeper {
     created: Date;
     modified: Date | null;
   }
+
+  interface ClientWithData extends Client {
+    contacts: Keeper.Contact[];
+    projects: Keeper.Project[];
+  }
 }

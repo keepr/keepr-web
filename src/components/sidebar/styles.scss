@@ -13,7 +13,6 @@
   transform: translateX(75vw);
   width: 75vw;
   transition: transform 0.2s ease-in-out, z-index 0.2s ease-in-out;
-  font-size: 1.5rem;
 
   &.visible {
     transform: translateX(0);
@@ -21,7 +20,7 @@
 
   a {
     margin-top: 1rem;
-    font-size: inherit;
+    font-size: 1rem;
     color: inherit;
   }
 }
@@ -36,4 +35,37 @@
   cursor: pointer;
   font-size: 1.7rem;
   color: inherit;
+}
+
+.user {
+  background-color: colors.$primary;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  .info {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    span:nth-child(1) {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    span:nth-child(2) {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+.link {
+  font-size: 1rem;
+  background-color: colors.$primary;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }

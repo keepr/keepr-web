@@ -1,35 +1,24 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useAsync } from 'react-use';
+import { useRecoilValue } from 'recoil';
 
-// helpers
-import { FetchWithAuth } from '../../helpers/fetch';
+// state
+import { ProjectByIdState } from '../../state/project';
 
 // components
 import Page from '../../components/page';
-import Placeholder from '../../components/placeholder';
 
 const Project = () => {
   const { id } = useParams();
-  const { value } = useAsync(
-    async () => await FetchWithAuth(`/api/projects/${id}`)
-  );
-
-  const project = value ? (value as Keeper.Project) : null;
+  const project = useRecoilValue(ProjectByIdState(id));
 
   return (
-    <Page title={project ? project.name : 'Loading'}>
-      {project ? (
-        <div>
-          <p>Rate: {project.hourlyRate}</p>
-          <p>
-            Budget: {project.budget.toLocaleString()} {project.currency}
-          </p>
-          <p>Archived: {project.archive}</p>
-        </div>
-      ) : (
-        <Placeholder />
-      )}
+    <Page title={`${project.name} | ${project.client.name}`}>
+      <p>Rate: {project.hourlyRate}</p>
+      <p>
+        Budget: {project.budget.toLocaleString()} {project.currency}
+      </p>
+      <p>Archived: {project.archive}</p>
     </Page>
   );
 };

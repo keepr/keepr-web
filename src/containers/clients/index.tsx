@@ -1,8 +1,8 @@
 import React from 'react';
-import { useAsync } from 'react-use';
+import { useRecoilValue } from 'recoil';
 
-// helpers
-import { FetchWithAuth } from '../../helpers/fetch';
+// state
+import { ClientState } from '../../state/client';
 
 // components
 import LinkCard from '../../components/card/link';
@@ -13,16 +13,12 @@ import TextAvatar from '../../components/text-avatar';
 import styles from './styles.scss';
 
 const Clients = () => {
-  const { value: data, loading } = useAsync(
-    async () => await FetchWithAuth('/api/clients')
-  );
-
-  const clients = !loading && data ? (data as Keeper.Client[]) : [];
+  const clients = useRecoilValue(ClientState);
 
   return (
     <Page title="Clients">
-      <Placeholder show={loading}>
-        {clients.map((client) => (
+      <Placeholder show={!clients}>
+        {clients?.map((client) => (
           <LinkCard
             key={`client-${client.id}`}
             to={`/client/${client.id}`}
