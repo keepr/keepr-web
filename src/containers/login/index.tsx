@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Field } from 'react-final-form';
 import { FORM_ERROR } from 'final-form';
+import { useSetRecoilState } from 'recoil';
+
+// state
+import { UserAtom } from '../../state/user';
 
 // helpers
 import { Fetch, FetchWithAuth } from '../../helpers/fetch';
-
-// context
-import UserContext from '../../context/user';
 
 // components
 import AuthLayout from '../../components/auth-layout';
@@ -18,8 +19,8 @@ import Input from '../../components/input';
 import styles from './styles.scss';
 
 const Login = () => {
-  const { setUser } = useContext(UserContext);
   const history = useHistory();
+  const setUser = useSetRecoilState(UserAtom);
 
   return (
     <AuthLayout>
@@ -41,12 +42,9 @@ const Login = () => {
 
             // now fetch user account
             const user = await FetchWithAuth('/api/users/me');
-            if (setUser) {
-              setUser(user as Keeper.User);
-              return history.push('/');
-            }
+            setUser(user as Keeper.User);
 
-            return { [FORM_ERROR]: 'Unable to log in.' };
+            return history.push('/');
           } catch (ex) {
             return { [FORM_ERROR]: ex.message };
           }

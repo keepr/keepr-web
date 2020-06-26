@@ -1,12 +1,5 @@
-import React, { Suspense, lazy, useContext, useEffect } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
-import { useAsync } from 'react-use';
-
-// context
-import UserContext from '../context/user';
-
-// helpers
-import { FetchWithAuth } from '../helpers/fetch';
 
 // components
 import Loader from '../components/loader';
@@ -38,20 +31,7 @@ const App = () => {
   const location = useLocation();
   useEffect(() => window.scrollTo(0, 0), [location]);
 
-  // user auth
-  const { user, setUser } = useContext(UserContext);
-  const authToken = localStorage.getItem('auth');
-
-  useAsync(async () => {
-    if (authToken && !user && setUser) {
-      const data = await FetchWithAuth('/api/users/me');
-      setUser(data as Keeper.User);
-    }
-  }, [user, setUser]);
-
-  return authToken && !user ? (
-    <Loader />
-  ) : (
+  return (
     <Suspense fallback={<Loader />}>
       <Switch>
         <ProtectedRoute path="/" component={Home} exact />

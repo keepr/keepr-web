@@ -7,6 +7,7 @@ declare namespace Keeper {
     hourlyRate: number;
     archive: boolean;
     created: Date;
+    client: Keeper.Client;
     modified: Date | null;
   }
 }

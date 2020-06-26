@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Route, RouteProps } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
-// context
-import UserContext from '../../context/user';
+// state
+import { UserState } from '../../state/user';
 
 // components
 import Layout from '../layout';
@@ -11,7 +12,8 @@ import Layout from '../layout';
 import Login from '../../containers/login';
 
 const ProtectedRoute = ({ ...props }: RouteProps) => {
-  const { user } = useContext(UserContext);
+  const user = useRecoilValue(UserState);
+
   return user ? (
     <Layout>
       <Route {...props} />
