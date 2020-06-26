@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
-import { GiBlackKnightHelm } from 'react-icons/gi';
+import { useRecoilValue } from 'recoil';
 
-// context
-import UserContext from '../../context/user';
+// state
+import { UserState } from '../../state/user';
 
 // components
 import MenuItems from './menu-items';
@@ -16,7 +16,7 @@ interface Props {
 }
 
 const Nav = ({ onMenuClick }: Props) => {
-  const { user } = useContext(UserContext);
+  const user = useRecoilValue(UserState);
 
   return (
     <nav className={styles.nav}>

@@ -1,15 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 
 // global styles
 import './styles/global.scss';
 
 // app container
 import App from './containers';
-
-// context
-import { UserProvider } from './context/user';
 
 const publicUrl = process.env.PUBLIC_URL || '/';
 const supportsHistory = 'pushState' in window.history;
@@ -19,9 +17,9 @@ const renderApp = (TheApp: React.FC) => {
   if (rootElement) {
     const HelixApp = (
       <BrowserRouter basename={publicUrl} forceRefresh={!supportsHistory}>
-        <UserProvider>
+        <RecoilRoot>
           <TheApp />
-        </UserProvider>
+        </RecoilRoot>
       </BrowserRouter>
     );
 

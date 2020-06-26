@@ -1,17 +1,14 @@
-import React, { useEffect, useContext } from 'react';
+import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
 
-// context
-import UserContext from '../../context/user';
+// state
+import { UserAtom } from '../../state/user';
 
 const Logout = () => {
-  const { clearUser } = useContext(UserContext);
-  useEffect(() => {
-    if (clearUser) {
-      localStorage.removeItem('auth');
-      clearUser();
-    }
-  }, [clearUser]);
+  const setUser = useSetRecoilState(UserAtom);
+  localStorage.removeItem('auth');
+  setUser(null);
 
   return <Redirect to="/login" />;
 };

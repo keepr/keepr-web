@@ -1,6 +1,17 @@
 @use "../../styles/colors";
-@use "../../styles/breakpoints";
 
-.home {
-  font-size: 3rem;
+.project {
+  display: flex;
+  align-items: center;
+
+  .info {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    .name {
+      color: colors.$primary;
+      font-size: 1.5rem;
+    }
+  }
 }
